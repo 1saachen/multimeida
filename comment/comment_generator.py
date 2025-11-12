@@ -127,7 +127,7 @@ class PromptEngineer:
         score_level = "高分" if scores.overall >= 85 else "中等" if scores.overall >= 70 else "低分"
 
         prompt_template = f"""
-你是一位有10年教学经验的英语写作专家。请根据以下完整信息，为这篇{score_level}作文生成专业、具体、建设性的反馈。
+你是一位英语写作专家。请根据以下完整信息，为这篇{score_level}作文生成专业、具体、建设性的反馈。
 
 【作文题目】
 {prompt.topic}
