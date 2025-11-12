@@ -16,9 +16,9 @@ class EnglishOCR:
         # 使用新版PaddleOCR初始化参数（保留英文模型）
         # expose lang 和 use_gpu 以便更灵活的配置
         self.ocr = PaddleOCR(
-            use_doc_orientation_classify=True,
-            use_doc_unwarping=True,
-            use_textline_orientation=True,
+            use_doc_orientation_classify=False,
+            use_doc_unwarping=False,
+            use_textline_orientation=False,
             lang=lang,
             
         )
@@ -280,58 +280,9 @@ class EnglishOCR:
             return None
 
 
-def create_sample_image():
-    """创建一个示例图片用于测试"""
-    try:
-        # 创建一个空白图片
-        img = np.ones((500, 700, 3), dtype=np.uint8) * 255  # 白色背景
-
-        # 添加文本
-        text_lines = [
-            "The Importance of Learning English",
-            "",
-            "English is an international language that",
-            "is widely used around the world. Learning",
-            "English can open up many opportunities for",
-            "people. It helps in communication with",
-            "people from different countries and cultures.",
-            "",
-            "Moreover, English is the language of",
-            "science and technology. Many books and",
-            "research papers are written in English.",
-            "Therefore, learning English is essential",
-            "for academic success.",
-            "",
-            "In conclusion, English is very important",
-            "in today's globalized world."
-        ]
-
-        # 设置字体
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 0.6
-        font_color = (0, 0, 0)  # 黑色
-        thickness = 1
-
-        # 在图片上写文本
-        y = 40
-        for line in text_lines:
-            if line:  # 非空行
-                cv2.putText(img, line, (30, y), font, font_scale, font_color, thickness)
-            y += 35
-
-        # 保存图片
-        cv2.imwrite('sample_essay.jpg', img)
-        print("✅ 已创建示例图片: sample_essay.jpg")
-        return 'sample_essay.jpg'
-
-    except Exception as e:
-        print(f"创建示例图片失败: {e}")
-        return None
-
-
 def main():
     parser = argparse.ArgumentParser(description="英语作文 OCR 识别工具 (改进版)")
-    parser.add_argument('input', nargs='?', default='essay1.png', help='图片路径或目录，默认 essay1.png')
+    parser.add_argument('input', nargs='?', default='essay2.jpg', help='图片路径或目录，默认 essay2.jpg')
     parser.add_argument('--out', '-o', default='ocr_output', help='结果保存目录')
     parser.add_argument('--lang', default='en', help='PaddleOCR 语言模型，例如 en、ch 等')
     parser.add_argument('--gpu', action='store_true', help='如果可用，启用 GPU')
@@ -349,11 +300,6 @@ def main():
         for ext in ('*.png', '*.jpg', '*.jpeg', '*.tiff', '*.bmp'):
             targets.extend(sorted(input_path.glob(ext)))
     else:
-        if not input_path.exists():
-            print("未找到测试图片，正在创建示例图片...")
-            sample = create_sample_image()
-            input_path = Path(sample)
-
         if not input_path.exists():
             print(f"❌ 图片文件不存在: {input_path}")
             return
