@@ -1,0 +1,40 @@
+{
+  "original_text": "The Importance of Learning English English is an international language that is widely used around the world. Learning English can open up many opportunities for people. It helps in communication with people from different countries and cultures. Moreover, English is the language of science and technology. Many books and research papers are written in English. Therefore, learning English is essential for acaderic success. In conclusion, English is very important",
+  "processed_text": "The Importance of Leaming English English is an intemational language that is widely used around the world. Leaming English can open up many opportunities for people. It helps in communication with people from different countries and cultures. Moreover, English is the language of science and technology. Many books and research papers are written in English. Therefore, leaming English is essential for academic success. In condusion, English is very important",
+  "overall_score": 74.2,
+  "detailed_analysis": {
+    "grammar": {
+      "score": 100,
+      "total_sentences": 7,
+      "avg_sentence_length": 9.86,
+      "errors": {
+        "capitalization": 0,
+        "double_spaces": 0,
+        "subject_verb_agreement": 0
+      }
+    },
+    "vocabulary": {
+      "score": 100,
+      "total_words": 69,
+      "unique_words": 46,
+      "lexical_diversity": 0.667,
+      "advanced_words_used": [
+        "moreover"
+      ]
+    },
+    "structure": {
+      "score": 31,
+      "sentences_count": 7,
+      "transitions_used": [
+        "therefore",
+        "moreover"
+      ]
+    },
+    "content": {
+      "score": 60,
+      "word_count": 69,
+      "feedback": "文章较短，建议扩展内容。"
+    }
+  },
+  "word_count": 69
+}
